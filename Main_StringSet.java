@@ -2,17 +2,17 @@ class Main_StringSet {
     public static void main(String[] args) {
       StringSet mySet = new StringSet(3);
       System.out.println(mySet);
-    //   mySet.add("Hello");
-    //   mySet.add("World");
-    //   mySet.add("World"); //duplicate
-    //   System.out.println(mySet);
-    //   mySet.add("and");
-    //   mySet.add("over");
-    //   mySet.add("cap");
-    //   System.out.println(mySet);
-    //   StringSet otherSet = new StringSet(mySet);
+      mySet.add("Hello");
+      // mySet.add("World");
+      mySet.add("World"); //duplicate
+      System.out.println(mySet);
+      mySet.add("and");
+      mySet.add("over");
+      mySet.add("cap");
+      System.out.println(mySet);
+      // StringSet otherSet = new StringSet(mySet);
     //   otherSet.add("Hi");
-    //   otherSet.add("Bob");
+      // otherSet.add("Bob");
     //   System.out.println(mySet);
     //   System.out.println(otherSet);
   
@@ -25,11 +25,11 @@ class Main_StringSet {
     //   }
     //   mySet.remove("and");
     //   System.out.println(mySet);
-    //   mySet.remove("Hello");
-    //   mySet.remove("World");
+      // mySet.remove("Hello");
+      mySet.remove("World");
     //   mySet.remove("Bob"); //Does nothing
-    //   mySet.remove("over");
-    //   System.out.println(mySet); //Should shrink!
+      mySet.remove("over");
+      System.out.println(mySet); //Should shrink!
     //   mySet.add("You");
     //   System.out.println(mySet);
   
