@@ -194,11 +194,11 @@ public class StringSet {
             {
             // If array 1 value is equal to Array 2 value
 
-                if(set1.strings[i].equals(set2.strings[j])){
+                if(set1.strings[i].equals(set2.strings[j])){ 
                 //Append to the newStringSet
-                    if(binarySearch(newStringSet.strings, set1.strings[i]) != -1)
-                    {
-                        newStringSet.add(set1.strings[1]);
+                    if(binarySearch(newStringSet.strings, set2.strings[j]) == -1)
+                    { 
+                        newStringSet.add(set2.strings[j]);
                     }
                 }
             }

@@ -35,7 +35,7 @@ class Main_StringSet {
   
     //   //Union test
       StringSet thirdSet = StringSet.union(mySet,otherSet);
-      System.out.println(thirdSet); //cap should NOT appear twice!
+      System.out.println("thirdSet: " + thirdSet); //cap should NOT appear twice!
   
       //Intersect test
       mySet = new StringSet(10);
@@ -44,8 +44,9 @@ class Main_StringSet {
       mySet.add("in");
       mySet.add("Only");
       mySet.add("Bob");
+      System.out.println("mySet: " + mySet);
       thirdSet = StringSet.intersect(mySet,thirdSet);
-      System.out.println(thirdSet);
+      System.out.println("intersect " + thirdSet);
     }
   }
   
