@@ -160,5 +160,23 @@ public class StringSet {
         }
     }
 
-    
+    public StringSet union(StringSet set1, StringSet set2)
+    {
+        //I delcare my StringSet object thats going to hold both given StringSet values
+        StringSet newStringSet = new StringSet(set1.size + set2.size);
+        
+        //I iterate through the first given StringSet value and add each value to the new StringSet object
+        for(int i = 0; i < set1.size; i++)
+        {
+            newStringSet.add(set1.strings[i]);
+        }
+        //I repeat the same process as in set1
+        for(int i = 0; i < set2.size; i++)
+        {
+            newStringSet.add(set2.strings[i]);
+        }
+
+        //Finally I return the new StrignSet Object
+        return newStringSet;
+    }
 }
