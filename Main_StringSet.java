@@ -4,13 +4,13 @@ class Main_StringSet {
       System.out.println(mySet);
       mySet.add("Hello");
       mySet.add("World");
-      // mySet.add("World"); //duplicate
+      mySet.add("World"); //duplicate
       System.out.println(mySet);
       mySet.add("and");
       mySet.add("over");
       mySet.add("cap");
       System.out.println(mySet);
-      StringSet otherSet = new StringSet(mySet.size);
+      StringSet otherSet = new StringSet(mySet);
       otherSet.add("Hi");
       otherSet.add("Bob");
       System.out.println(mySet);
@@ -18,24 +18,24 @@ class Main_StringSet {
   
       mySet.trimToSize(5);
       System.out.println(mySet);
-      // try {
-      //   // mySet.trimToSize(2); //Too small
-      // } catch (IllegalArgumentException e) {
-      //   System.out.println("Correctly throws trim error");
-      // }
+      try {
+        mySet.trimToSize(2); //Too small
+      } catch (IllegalArgumentException e) {
+        System.out.println("Correctly throws trim error");
+      }
       mySet.remove("and");
       System.out.println(mySet);
       mySet.remove("Hello");
       mySet.remove("World");
-    //   mySet.remove("Bob"); //Does nothing
-      // mySet.remove("over");
+      mySet.remove("Bob"); //Does nothing
+      mySet.remove("over");
       System.out.println(mySet); //Should shrink!
       mySet.add("You");
       System.out.println(mySet);
   
-    //   //Union test
+    //   //Union test 
       StringSet thirdSet = StringSet.union(mySet,otherSet);
-      System.out.println("thirdSet: " + thirdSet); //cap should NOT appear twice!
+      System.out.println(thirdSet); //cap should NOT appear twice!
   
       //Intersect test
       mySet = new StringSet(10);
@@ -44,9 +44,9 @@ class Main_StringSet {
       mySet.add("in");
       mySet.add("Only");
       mySet.add("Bob");
-      System.out.println("mySet: " + mySet);
+      System.out.println(mySet);
       thirdSet = StringSet.intersect(mySet,thirdSet);
-      System.out.println("intersect " + thirdSet);
+      System.out.println(thirdSet);
     }
   }
   

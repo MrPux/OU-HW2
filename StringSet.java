@@ -8,8 +8,14 @@ public class StringSet {
 
     // Pre-condition(s): a number greater than zero.
     public StringSet(int initialCapacity) {
-        if (initialCapacity < 1) {
-            throw new IllegalArgumentException("Hey man, your number can't be negative.");
+        try{
+            if (initialCapacity < 1) {
+                throw new IllegalArgumentException("Hey man, your number can't be negative.");
+            }
+        }catch(IllegalArgumentException i)
+        {
+            System.err.println(i.getMessage() + "\n");
+            return;
         }
 
         this.strings = new String[initialCapacity];
@@ -22,8 +28,19 @@ public class StringSet {
         this.size = 0;
     }
 
-    // Pre-codniton(s): StringSet object. Copy the the object elements into
-    // this.StringSet.
+    // Pre-codniton(s): StringSet object. Copy the the object elements into this.StringSet.
+    public StringSet(StringSet stringSetObject)
+    {
+        this.strings = new String[stringSetObject.size * 2];
+        for (int i = 0; i < stringSetObject.size; i++)
+        {
+            this.strings[i] = stringSetObject.strings[i];
+        }
+
+        this.size = stringSetObject.size;
+    }
+
+
 
     @Override
     public String toString() {
@@ -48,9 +65,15 @@ public class StringSet {
             ensureCapacity(1);
         }
         //I will make sure that if item string being added is not yet in the list 
-        if (binarySearch(this.strings, string) != -1) {
-            throw new IllegalArgumentException(
-                    "Hey buddy, we already got a " + string + " in our inventory. Try adding something knew.");
+        try{
+            if (binarySearch(this.strings, string) != -1) {
+                throw new IllegalArgumentException(
+                        "Hey buddy, we already got a " + "\"" + string + "\"" + " in our inventory. Try adding something knew.");
+            }
+        }catch(IllegalArgumentException i)
+        {
+            System.err.println(i.getMessage() +"\n");
+            return;
         }
         //If I am adding a new item, I need to ensure that my list is not full
         if (size == strings.length) {
@@ -108,11 +131,16 @@ public class StringSet {
     public void trimToSize(int newSize)
     {
         // I first make sure the new given size is not less than the current size, otherwise why would we need more space when already got enough...
-        if (newSize < this.size)
+       try{
+            if (newSize < this.size)
+            {
+                throw new IllegalArgumentException("Hey buddy, new size must be greater or equal to the current size");
+            }
+        }catch(IllegalArgumentException i)
         {
-            throw new IllegalArgumentException("hey buddy, new size must be greater or equal to the current size");
+            System.err.println(i.getMessage() + "\n");
+            return;
         }
-
         //I initialize a temporary array as to keep my original array values
         String[] tempArray = new String[newSize];
         //I iterate through the current size of values kept on my original array and append them to the temporary one
@@ -126,20 +154,26 @@ public class StringSet {
 
     public void remove(String value)
     {
-        //First of all I make sure the item value is on the array
-        if(binarySearch(this.strings, value) != -1)
-        {
-            //If the item value is in the array I set it to null, as to indicate we no longer need it
-            this.strings[binarySearch(strings, value)] = null;
+        try{
+            //First of all I make sure the item value is on the array
+            if(binarySearch(this.strings, value) != -1)
+            {
+                //If the item value is in the array I set it to null, as to indicate we no longer need it
+                this.strings[binarySearch(strings, value)] = null;
 
-            //I then traverse null to the end
-            shiftNullsToEnd(this.strings);
-            //I make sure to update my size of values found in my array, that of course are not null
-            this.size--;
-        }
-        else
+                //I then traverse null to the end
+                shiftNullsToEnd(this.strings);
+                //I make sure to update my size of values found in my array, that of course are not null
+                this.size--;
+            }
+            else
+            {
+                throw new IllegalArgumentException("Hey buddy, the item you are trying to remove is not on the list of strings, try adding it first.");
+            }
+        }catch(IllegalArgumentException i)
         {
-            throw new IllegalArgumentException("Hey buddy, the item you are trying to remove is not on the list of strigns, try adding it first.");
+            System.err.println(i.getMessage() + "\n");
+            return;
         }
 
     }
