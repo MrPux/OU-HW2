@@ -71,7 +71,7 @@ public class StringSet {
         size++;
     }
 
-    public int binarySearch(String[] array, String target) {
+    public static int binarySearch(String[] array, String target) {
         //I am declaring + Initializing my starting and end positon of the current list
         int left = 0, right = array.length - 1;
 
@@ -160,7 +160,7 @@ public class StringSet {
         }
     }
 
-    public StringSet union(StringSet set1, StringSet set2)
+    public static StringSet union(StringSet set1, StringSet set2)
     {
         //I delcare my StringSet object thats going to hold both given StringSet values
         StringSet newStringSet = new StringSet(set1.size + set2.size);
@@ -178,5 +178,32 @@ public class StringSet {
 
         //Finally I return the new StrignSet Object
         return newStringSet;
+    }
+
+    public static StringSet intersect(StringSet set1, StringSet set2)
+    {
+        // Pre-conditons: two StringSet objects
+
+        // Initialize a new StringSet object whose starting value is 0
+        StringSet newStringSet = new StringSet(Math.min(set1.size, set2.size));
+
+        // Iterate through a 2D Array
+        for(int i = 0; i < set1.size; i++)
+        {
+            for(int j = 0; j < set2.size; j++)
+            {
+            // If array 1 value is equal to Array 2 value
+
+                if(set1.strings[i].equals(set2.strings[j])){
+                //Append to the newStringSet
+                    if(binarySearch(newStringSet.strings, set1.strings[i]) != -1)
+                    {
+                        newStringSet.add(set1.strings[1]);
+                    }
+                }
+            }
+        }
+        return newStringSet;
+        
     }
 }

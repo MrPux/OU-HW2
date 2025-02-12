@@ -3,49 +3,49 @@ class Main_StringSet {
       StringSet mySet = new StringSet(3);
       System.out.println(mySet);
       mySet.add("Hello");
-      // mySet.add("World");
-      mySet.add("World"); //duplicate
+      mySet.add("World");
+      // mySet.add("World"); //duplicate
       System.out.println(mySet);
       mySet.add("and");
       mySet.add("over");
       mySet.add("cap");
       System.out.println(mySet);
-      // StringSet otherSet = new StringSet(mySet);
-    //   otherSet.add("Hi");
-      // otherSet.add("Bob");
-    //   System.out.println(mySet);
-    //   System.out.println(otherSet);
+      StringSet otherSet = new StringSet(mySet.size);
+      otherSet.add("Hi");
+      otherSet.add("Bob");
+      System.out.println(mySet);
+      System.out.println(otherSet);
   
-    //   mySet.trimToSize(5);
-    //   System.out.println(mySet);
-    //   try {
-    //     mySet.trimToSize(2); //Too small
-    //   } catch (IllegalArgumentException e) {
-    //     System.out.println("Correctly throws trim error");
-    //   }
-    //   mySet.remove("and");
-    //   System.out.println(mySet);
-      // mySet.remove("Hello");
+      mySet.trimToSize(5);
+      System.out.println(mySet);
+      // try {
+      //   // mySet.trimToSize(2); //Too small
+      // } catch (IllegalArgumentException e) {
+      //   System.out.println("Correctly throws trim error");
+      // }
+      mySet.remove("and");
+      System.out.println(mySet);
+      mySet.remove("Hello");
       mySet.remove("World");
     //   mySet.remove("Bob"); //Does nothing
-      mySet.remove("over");
+      // mySet.remove("over");
       System.out.println(mySet); //Should shrink!
-    //   mySet.add("You");
-    //   System.out.println(mySet);
+      mySet.add("You");
+      System.out.println(mySet);
   
     //   //Union test
-    //   StringSet thirdSet = StringSet.union(mySet,otherSet);
-    //   System.out.println(thirdSet); //cap should NOT appear twice!
+      StringSet thirdSet = StringSet.union(mySet,otherSet);
+      System.out.println(thirdSet); //cap should NOT appear twice!
   
-    //   //Intersect test
-    //   mySet = new StringSet(10);
-    //   mySet.add("Hi");
-    //   mySet.add("not");
-    //   mySet.add("in");
-    //   mySet.add("Only");
-    //   mySet.add("Bob");
-    //   thirdSet = StringSet.intersect(mySet,thirdSet);
-    //   System.out.println(thirdSet);
+      //Intersect test
+      mySet = new StringSet(10);
+      mySet.add("Hi");
+      mySet.add("not");
+      mySet.add("in");
+      mySet.add("Only");
+      mySet.add("Bob");
+      thirdSet = StringSet.intersect(mySet,thirdSet);
+      System.out.println(thirdSet);
     }
   }
   
